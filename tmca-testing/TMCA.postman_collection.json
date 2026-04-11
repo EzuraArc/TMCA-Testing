@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "8ae9d6ef-9409-4a60-8dd4-521e4c37f06b",
+    "name": "TMCA",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37883656",
+    "_collection_link": "https://go.postman.co/collection/37883656-8ae9d6ef-9409-4a60-8dd4-521e4c37f06b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Organization",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"The Madras CA\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/organizations/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "organizations",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Team",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Finance Team\",\r\n  \"type\": \"internal\",\r\n  \"organization_id\": \"e4deaa2b-06e9-4a8f-a686-2de2a19e1895\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/teams/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "teams",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "User",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Akash\",\r\n  \"username\": \"Akash2176e\",\r\n  \"password\": \"tmca@123\",\r\n  \"role\": \"admin\",\r\n  \"team_id\": \"57d39e65-8557-4ec5-b783-4656a0e6e54a\",\r\n  \"phone\": \"+91-7305594291\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "users",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"Akash2176e\",\r\n  \"password\": \"tmca@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
