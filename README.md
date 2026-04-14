@@ -16,6 +16,7 @@ This repository is the Postman test pack for the TMCA backend. It exists so the 
 - Teams: register, get by id, get by organization
 - Users: register, get profile, get by id
 - Clients: create, update, get my clients, get team clients, onboarding summary, get by id
+- Onboarding sections: initial client details save, section-wise save, status fetch, submit
 - Dashboards: admin, team_admin, team_lead, team_member routes
 
 ## How to test in Postman
@@ -42,6 +43,15 @@ This repository is the Postman test pack for the TMCA backend. It exists so the 
    - `Clients > Get Team Clients`
    - `Clients > Get Onboarding Summary`
    - `Clients > Get Client By Id`
+  - `Clients > Onboarding - Initial Save Client Details`
+  - `Clients > Onboarding - Save Form Uploads`
+  - `Clients > Onboarding - Save TDS Summary (Draft)`
+  - `Clients > Onboarding - Save Bank Details`
+  - `Clients > Onboarding - Save Business Expenses`
+  - `Clients > Onboarding - Save Loan Details`
+  - `Clients > Onboarding - Save Loan Summary`
+  - `Clients > Onboarding - Get Status`
+  - `Clients > Onboarding - Submit`
    - `Dashboard > Admin Overview`
    - `Dashboard > Admin Team Overview`
    - `Dashboard > Team Admin Overview`
@@ -57,6 +67,10 @@ This repository is the Postman test pack for the TMCA backend. It exists so the 
 - Organization and team creation require an admin token.
 - User registration requires an admin or team_admin token.
 - Client and dashboard routes require a valid Bearer token.
+- Onboarding starts with `client_details` via `POST /clients/onboarding/save`.
+- Other onboarding sections save via `POST /clients/:clientId/onboarding/save`.
+- Final onboarding submit uses `POST /clients/:clientId/onboarding/submit`.
+- `tds_summary` generation is pending and is treated as draft in tests.
 
 ## Example request bodies
 
@@ -125,5 +139,9 @@ This repository is the Postman test pack for the TMCA backend. It exists so the 
 
 - Replace the placeholder UUID variables with real values returned from earlier requests.
 - Keep the JWT token in the `accessToken` collection variable.
-- The collection only includes routes that are currently implemented in the backend code.
-- The folders for documents, filings, and financials are intentionally omitted because their controllers are still placeholders.
+- The collection includes only routes currently implemented in backend code.
+- Onboarding requests map to existing DB tables used by backend:
+  - `documents` for form uploads
+  - `bank_accounts` for bank details
+  - `expenses` for business expenses
+  - `loans` and `loan_summary` for loan sections
